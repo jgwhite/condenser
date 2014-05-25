@@ -23,6 +23,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.SC_CLIENT_ID = process.env.SC_CLIENT_ID;
+    ENV.SC_CALLBACK_URL = 'http://localhost:4200/callback.html';
   }
 
   if (environment === 'production') {
