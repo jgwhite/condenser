@@ -3,6 +3,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.resource('me');
 });
 
 export default Router;
