@@ -1,13 +1,10 @@
 import ApplicationSerializer from 'condenser/serializers/application';
 
 export default ApplicationSerializer.extend({
+  primaryKey: 'permalink',
+
   extractSingle: function(store, type, payload, id) {
-    Ember.merge(payload, {
-      links: {
-        tracks: payload.uri + '/tracks',
-        followings: payload.uri + '/followings'
-      }
-    });
+    addLinks(payload);
 
     payload = {
       user: payload
@@ -17,6 +14,8 @@ export default ApplicationSerializer.extend({
   },
 
   extractArray: function(store, type, payload) {
+    payload.forEach(addLinks);
+
     payload = {
       users: payload
     };
@@ -24,3 +23,12 @@ export default ApplicationSerializer.extend({
     return this._super(store, type, payload);
   }
 });
+
+function addLinks(user) {
+  Ember.merge(user, {
+    links: {
+      tracks: user.uri + '/tracks',
+      followings: user.uri + '/followings'
+    }
+  });
+}

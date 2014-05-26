@@ -1,6 +1,9 @@
-<nav>
-  {{#link-to "tracks" this}}Tracks ({{trackCount}}){{/link-to}}
-  {{#link-to "followings" this}}Followings ({{followingsCount}}){{/link-to}}
+<nav class="menu-bar">
+  <div class="menu-bar-left">
+    <span class="menu-bar-button">{{username}}:</span>
+    {{#link-to "tracks" this class="menu-bar-button"}}Tracks ({{trackCount}}){{/link-to}}
+    {{#link-to "followings" this class="menu-bar-button"}}Following ({{followingsCount}}){{/link-to}}
+  </div>
 </nav>
 
 {{outlet}}

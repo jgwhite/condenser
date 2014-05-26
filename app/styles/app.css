@@ -1,3 +1,96 @@
 html, body {
-  margin: 20px;
+  display: block;
+  position: relative;
+  margin: 0;
+  height: 100%;
+
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+#application-menu-bar {
+  position: fixed;
+  top: 0; right: 0; bottom: auto; left: 0;
+}
+
+.menu-bar {
+  position: relative;
+  font-family: 'helvetica neue', arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 2em;
+  color: #787878;
+  background: #f5f5f5;
+  height: 2em;
+}
+
+.menu-bar-dark {
+  background: #555;
+  color: #f5f5f5;
+}
+
+.menu-bar-left {
+  position: absolute;
+  top: 0; left: .5em; bottom: 0;
+}
+
+.menu-bar-right {
+  position: absolute;
+  top: 0; right: .5em; bottom: 0;
+}
+
+.menu-bar-divider {
+  display: block;
+  float: left;
+}
+
+.menu-bar-button {
+  display: block;
+  float: left;
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 0 0.5em;
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.menu-bar-button.loading {
+  color: #333;
+}
+.menu-bar-button.active {
+  color: #333;
+}
+
+.menu-bar-dark .menu-bar-button.active {
+  color: #f5f5f5;
+}
+
+#main {
+  position: fixed;
+  top: 2em; right: 0; bottom: 0; left: 0;
+  overflow: auto;
+}
+
+#main.track-bar-present {
+  bottom: 166px;
+}
+
+#track-bar {
+  position: fixed;
+  top: auto; right: 0; bottom: 0; left: 0;
+  height: 166px;
+  overflow: hidden;
+  background: #f5f5f5;
 }

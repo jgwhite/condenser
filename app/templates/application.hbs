@@ -1,16 +1,28 @@
-{{#if me.avatarUrl}}
-  <img {{bind-attr src=me.avatarUrl}}>
+<div class="menu-bar menu-bar-dark" id="application-menu-bar">
+  <div class="menu-bar-left">
+    {{link-to "Condenser" "index" class="menu-bar-button"}}
+    {{#if track.model}}
+      <span class="menu-bar-divider">/</span>
+      {{link-to track.user.username "user" track.user class="menu-bar-button"}}
+      <span class="menu-bar-divider">/</span>
+      <span class="menu-bar-button">{{track.title}}</span>
+    {{/if}}
+  </div>
+  <div class="menu-bar-right">
+    {{#if isConnected}}
+      <button {{action "disconnect"}} class="menu-bar-button">Disconnect</button>
+    {{else}}
+      <button {{action "connect"}} class="menu-bar-button">Connect</button>
+    {{/if}}
+  </div>
+</div>
+
+<div id="main" {{bind-attr class="track.uri:track-bar-present"}}>
+  {{outlet}}
+</div>
+
+{{#if track.uri}}
+  <div id="track-bar">
+    {{sc-oembed uri=track.uri color="red"}}
+  </div>
 {{/if}}
-
-<nav>
-  {{link-to "Home" "index"}}
-
-  {{#if isConnected}}
-    {{link-to "Profile" "user" me}}
-    <a href {{action "disconnect"}}>Disconnect</a>
-  {{else}}
-    <a href {{action "connect"}}>Connect</a>
-  {{/if}}
-</nav>
-
-{{outlet}}

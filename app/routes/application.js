@@ -5,9 +5,12 @@ export default Ember.Route.extend({
     }
   },
 
-  setupMe: function() {
+  setupMe: function(transition) {
     return this.store.find('user', 'me').then(function(me) {
       this.controllerFor('me').set('model', me);
+      if (transition) {
+        this.transitionTo('user', me);
+      }
     }.bind(this));
   },
 
@@ -15,7 +18,7 @@ export default Ember.Route.extend({
     connect: function() {
       SC.connect(Ember.run.bind(this, function() {
         localStorage.accessToken = SC.accessToken();
-        this.setupMe();
+        this.setupMe(true);
       }));
     },
 
