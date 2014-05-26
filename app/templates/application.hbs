@@ -1,6 +1,16 @@
+{{#if me.avatarUrl}}
+  <img {{bind-attr src=me.avatarUrl}}>
+{{/if}}
+
 <nav>
   {{link-to "Home" "index"}}
-  {{link-to "Profile" "me"}}
+
+  {{#if isConnected}}
+    {{link-to "Profile" "user" me}}
+    <a href {{action "disconnect"}}>Disconnect</a>
+  {{else}}
+    <a href {{action "connect"}}>Connect</a>
+  {{/if}}
 </nav>
 
 {{outlet}}

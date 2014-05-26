@@ -10,7 +10,8 @@
     "$": true,
     "ENV": true,
     "module": true,
-    "SC": true
+    "SC": true,
+    "localStorage": true
   },
   "node" : false,
   "browser" : false,

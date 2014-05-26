@@ -3,7 +3,10 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('me');
+  this.resource('user', { path: ':user_id' }, function() {
+    this.resource('tracks');
+    this.resource('followings');
+  });
 });
 
 export default Router;
