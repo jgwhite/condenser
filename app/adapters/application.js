@@ -2,15 +2,7 @@ export default DS.Adapter.extend({
   find: function(store, type, id) {
     var uri = uriForTypeAndId(type, id);
 
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      SC.get(uri, function(payload, error) {
-        if (error) {
-          Ember.run(null, reject, error);
-        } else {
-          Ember.run(null, resolve, payload);
-        }
-      });
-    });
+    return scGet(uri);
   },
 
   findHasMany: function(store, record, url, relationship) {
